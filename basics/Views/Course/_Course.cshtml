@@ -1,0 +1,30 @@
+<!--
+    Bu dosya hem index hem de course list altında olan card formatının ortak olması sebebiyle buradan yönetilir
+-->
+@model Course 
+<div class="card mb-3" id="kurs_@Model.Id">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="~/img/@Model.Image" class="img-fluid rounded-start" alt="">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <a asp-controller="Course" asp-action="Details" asp-route-id="@Model.Id">
+                <h5 class="card-title">
+                    @Model.Title
+                </h5>
+            </a>
+                <p class="card-text">@Model.Description</p>
+                @if(Model.Tags !=null){ 
+                    @foreach (var tag in Model.Tags)
+        
+                    {
+                       <span class="badge bg-primary">@tag</span>
+                    }
+                 }
+              
+            </div>
+            
+        </div>
+    </div>
+</div>   
